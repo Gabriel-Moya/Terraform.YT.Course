@@ -14,12 +14,14 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "my-test-bucket" {
-  bucket = "my-tf-test-bucket-7e39bf1b-4e65-4c9b-9b4e-8b29f457ff71"
+  bucket = "my-tf-test-bucket-7e39bf1b-4e65-4c9b-9b4e-8b29f457ff712"
   acl    = "private"
 
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
-    Managedby   = "Terraform"
+    ManagedBy   = "Terraform"
+    Owner       = "Gabriel Moya"
+    UpdatedAt   = "2024-01-02"
   }
 }
