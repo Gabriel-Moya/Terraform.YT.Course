@@ -27,6 +27,8 @@ resource "aws_s3_bucket" "bucket-for-remote-state" {
     ManagedBy   = "Terraform"
     Owner       = "Gabriel Moya"
     CreatedAt   = "2024-01-09"
+    Classroom   = "udemy"
+    Lesson      = "01-00-remote-state"
   }
 }
 
