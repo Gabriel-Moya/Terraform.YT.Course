@@ -11,16 +11,18 @@ module "logs" {
   name          = "${local.domain}-logs"
   acl           = "log-delivery-write"
   force_destroy = !local.has_domain
+  tags          = local.common_tags
 }
 
 module "website" {
-  source        = "github.com/chgasparoto/terraform-s3-object-notification"
-  name          = local.domain
-  acl           = "public-read"
-  policy        = {
+  source = "github.com/chgasparoto/terraform-s3-object-notification"
+  name   = local.domain
+  acl    = "public-read"
+  policy = {
     json = data.template_file.s3-bucket-policy.rendered
   }
-  force_destroy = !local.has_domain
+  force_destroy           = !local.has_domain
+  tags                    = local.common_tags
   block_public_acls       = false
   block_public_policy     = false
   ignore_public_acls      = false
@@ -43,10 +45,11 @@ module "website" {
 }
 
 module "redirect" {
-  source        = "github.com/chgasparoto/terraform-s3-object-notification"
-  name          = "www.${local.domain}"
-  acl           = "public-read"
-  force_destroy = !local.has_domain
+  source                  = "github.com/chgasparoto/terraform-s3-object-notification"
+  name                    = "www.${local.domain}"
+  acl                     = "public-read"
+  force_destroy           = !local.has_domain
+  tags                    = local.common_tags
   block_public_acls       = false
   block_public_policy     = false
   ignore_public_acls      = false
