@@ -3,6 +3,7 @@ data "template_file" "s3-bucket-policy" {
 
   vars = {
     bucket_name = local.domain
+    cdn_oai     = aws_cloudfront_origin_access_identity.this.id
   }
 }
 
