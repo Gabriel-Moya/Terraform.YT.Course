@@ -7,5 +7,17 @@ output "igw_id" {
 }
 
 output "subnet_ids" {
-  value = { for k, v in aws_subnet.this : v.tags.Name => v.id }
+  value = local.subnet_ids
+}
+
+output "public_route_table_id" {
+  value = aws_route_table.public.id
+}
+
+output "private_route_table_id" {
+  value = aws_route_table.private.id
+}
+
+output "route_table_association_ids" {
+  value = [for k, v in aws_route_table_association.this : v.id]
 }
