@@ -14,3 +14,15 @@ variable "service_name" {
   type        = string
   default     = "autoscaling-app"
 }
+
+variable "instance_type" {
+  description = "value of the instance type"
+  type        = string
+  default     = "t3.micro"
+}
+
+variable "instance_key_name" {
+  description = "value of the key name"
+  type        = string
+  default     = "terraform-course-temp"
+}
